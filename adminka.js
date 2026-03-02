@@ -1,9 +1,13 @@
+import { initTodo } from "./ToDo.js";
+
 let sidebar = document.querySelector('.sidebar');
 let conteiner = document.getElementById('conteiner');
 let closedSidebar = document.getElementById('sideTBtn');
 let exit = document.getElementById('exit');
 
 let sideVisible = true;
+
+initTodo();
 
 closedSidebar.addEventListener('click', ()=>{
     if(sideVisible){
@@ -21,4 +25,5 @@ closedSidebar.addEventListener('click', ()=>{
 exit.addEventListener('click', ()=>{
     window.location.href = '/'
 })
+
 
