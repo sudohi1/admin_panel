@@ -47,7 +47,7 @@ let todosRender = () => {
         const checked = todo.querySelector('.checkbox');
         checked.addEventListener('change', ()=>{
             input.finished = checked.checked
-            todo.style = checked.checked ? "#94D6A6" : ""
+            todo.style.backgroundColor = checked.checked ? "#94D6A6" : ""
         })
         let delBtn = todo.querySelector('.todo-del');
         delBtn.addEventListener('click', (e) => {
