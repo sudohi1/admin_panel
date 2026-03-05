@@ -30,20 +30,30 @@ function AddTodo() {
 }
 
 
+
 let todosRender = () => {
     todoList.innerHTML = ''
     todos.forEach((input)=>{
         let todo = document.createElement('li');
         todo.className = "li-todo";
         todo.innerHTML =`
-            <input type="checkbox"></input><p>${input.text}</p><input class="todo-del" type="button" id="${input.id}" value="del"></input>
+            <input type="checkbox" class="checkbox" ${input.finished ? "checked" : ""}>
+            <p>${input.text}</p>
+            <input class="todo-del" type="button" value="del">
         `
+        todoList.appendChild(todo);
+        todo.style.backgroundColor = input.finished ? "#94D6A6" : "";
+
+        const checked = todo.querySelector('.checkbox');
+        checked.addEventListener('change', ()=>{
+            input.finished = checked.checked
+            todo.style = checked.checked ? "#94D6A6" : ""
+        })
         let delBtn = todo.querySelector('.todo-del');
         delBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             deletTodo(input.id)
         })
-        todoList.appendChild(todo);
         todoInput.value = '';
     })
 
